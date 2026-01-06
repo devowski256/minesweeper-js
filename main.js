@@ -86,7 +86,7 @@ function getButtonPosition(button) {
 }
 
 function initView(view, state) {
-  view.restart.removeAttribute('class');
+  view.smiley.removeAttribute('class');
   view.minesLeft.innerText = `${state.minesLeft}`.padStart(3, '0');
   view.timer.innerText = '000';
 
@@ -136,7 +136,7 @@ function ensureTimerStarted(view, state) {
 }
 
 function handleGameEvents(view, state) {
-  view.restart.addEventListener('click', () =>
+  view.smiley.addEventListener('click', () =>
     restartGame(view, state)
   );
 
@@ -185,7 +185,7 @@ function handleFieldReveal(view, state, button) {
     case -1:
       if (revealField(state, button)) {
         button.classList.add('exploded');
-        view.restart.className = 'lost';
+        view.smiley.className = 'lost';
         gameOver(view, state);
       }
       break;
@@ -199,7 +199,7 @@ function handleFieldReveal(view, state, button) {
   }
 
   if (state.fieldsLeft === 0) {
-    view.restart.className = 'won';
+    view.smiley.className = 'won';
     gameOver(view, state);
   }
 }
@@ -280,7 +280,7 @@ function revealEmptyArea(grid, state, x, y) {
 function main() {
   const view = {
     minesLeft: document.getElementById('mines-left'),
-    restart: document.getElementById('restart'),
+    smiley: document.getElementById('smiley'),
     timer: document.getElementById('timer'),
     grid: document.getElementById('grid'),
   };

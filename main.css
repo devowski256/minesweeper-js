@@ -32,7 +32,7 @@ body {
   font-size: 18px;
 }
 
-#restart {
+#smiley {
   display: block;
   padding: 0;
   width: 34px;
@@ -41,15 +41,15 @@ body {
   background: inherit;
 }
 
-#restart::after {
+#smiley::after {
   content: '🙂';
 }
 
-#restart.lost::after {
+#smiley.lost::after {
   content: '😵‍💫';
 }
 
-#restart.won::after {
+#smiley.won::after {
   content: '😎';
 }
 
@@ -75,7 +75,7 @@ body {
 /* Outset border */
 .game,
 #grid button,
-#restart {
+#smiley {
   border: 2px solid;
   border-color: #fff #808080 #808080 #fff;
 }
@@ -83,7 +83,7 @@ body {
 /* Inset border */
 .nav,
 #grid,
-#restart:active {
+#smiley:active {
   border: 2px solid;
   border-color: #808080 #fff #fff #808080;
 }
