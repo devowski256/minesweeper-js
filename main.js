@@ -90,19 +90,10 @@ function initView(view, state) {
   view.minesLeft.innerText = `${state.minesLeft}`.padStart(3, '0');
   view.timer.innerText = '000';
 
-  const height = state.fields.length;
-  const width = state.fields[0].length;
-
-  for (let y = 0; y < height; y++) {
-    for (let x = 0; x < width; x++) {
-      const index = y * width + x;
-      const button = view.grid.children[index];
-
-      button.innerText = '';
-      button.disabled = false;
-      button.removeAttribute('class');
-      button.removeAttribute('data-value');
-    }
+  for (const button of view.grid.children) {
+    button.innerText = '';
+    button.disabled = false;
+    button.removeAttribute('class');
   }
 }
 
@@ -213,8 +204,9 @@ function revealField(state, button) {
   button.classList.remove('flagged');
 
   const { x, y } = getButtonPosition(button);
+  const value = state.fields[y][x];
 
-  switch (state.fields[y][x]) {
+  switch (value) {
     case -1:
       button.className = 'mine';
       break;
@@ -224,7 +216,6 @@ function revealField(state, button) {
       break;
 
     default:
-      const value = state.fields[y][x];
       button.className = `value-${value}`;
       button.innerText = value;
       state.fieldsLeft--;
