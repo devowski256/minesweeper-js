@@ -1,32 +1,3 @@
-function createFieldButtons(view, state) {
-  const fragment = new DocumentFragment();
-
-  const height = state.fields.length;
-  const width = state.fields[0].length;
-
-  for (let y = 0; y < height; y++) {
-    for (let x = 0; x < width; x++) {
-      const button = document.createElement('button');
-      button.dataset.x = x;
-      button.dataset.y = y;
-
-      fragment.append(button);
-    }
-  }
-
-  view.grid.style.gridTemplateColumns = `repeat(${width}, 1fr)`;
-  view.grid.style.gridTemplateRows = `repeat(${height}, 1fr)`;
-
-  view.grid.append(fragment);
-}
-
-function getButtonPosition(button) {
-  return {
-    x: Number(button.dataset.x),
-    y: Number(button.dataset.y),
-  };
-}
-
 function initGameState({ width, height, minesCount }) {
   const state = {
     minesCount,
@@ -83,6 +54,35 @@ function updateMineNeighbours(state, mineX, mineY) {
       }
     }
   }
+}
+
+function createFieldButtons(view, state) {
+  const fragment = new DocumentFragment();
+
+  const height = state.fields.length;
+  const width = state.fields[0].length;
+
+  for (let y = 0; y < height; y++) {
+    for (let x = 0; x < width; x++) {
+      const button = document.createElement('button');
+      button.dataset.x = x;
+      button.dataset.y = y;
+
+      fragment.append(button);
+    }
+  }
+
+  view.grid.style.gridTemplateColumns = `repeat(${width}, 1fr)`;
+  view.grid.style.gridTemplateRows = `repeat(${height}, 1fr)`;
+
+  view.grid.append(fragment);
+}
+
+function getButtonPosition(button) {
+  return {
+    x: Number(button.dataset.x),
+    y: Number(button.dataset.y),
+  };
 }
 
 function initView(view, state) {
