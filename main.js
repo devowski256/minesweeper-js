@@ -66,6 +66,25 @@ function insertMines(state, minesCount) {
   state.fieldsLeft -= minesCount;
 }
 
+function updateMineNeighbours(state, mineX, mineY) {
+  const { fields } = state;
+  const height = fields.length;
+  const width = fields[0].length;
+
+  const startX = Math.max(0, mineX - 1);
+  const startY = Math.max(0, mineY - 1);
+  const endX = Math.min(width - 1, mineX + 1);
+  const endY = Math.min(height - 1, mineY + 1);
+
+  for (let y = startY; y <= endY; y++) {
+    for (let x = startX; x <= endX; x++) {
+      if (fields[y][x] !== -1) {
+        fields[y][x]++;
+      }
+    }
+  }
+}
+
 function initView(view, state) {
   view.restart.removeAttribute('class');
   view.minesLeft.innerText = `${state.minesLeft}`.padStart(3, '0');
@@ -83,25 +102,6 @@ function initView(view, state) {
       button.disabled = false;
       button.removeAttribute('class');
       button.removeAttribute('data-value');
-    }
-  }
-}
-
-function updateMineNeighbours(state, mineX, mineY) {
-  const { fields } = state;
-  const height = fields.length;
-  const width = fields[0].length;
-
-  const startX = Math.max(0, mineX - 1);
-  const startY = Math.max(0, mineY - 1);
-  const endX = Math.min(width - 1, mineX + 1);
-  const endY = Math.min(height - 1, mineY + 1);
-
-  for (let y = startY; y <= endY; y++) {
-    for (let x = startX; x <= endX; x++) {
-      if (fields[y][x] !== -1) {
-        fields[y][x]++;
-      }
     }
   }
 }
