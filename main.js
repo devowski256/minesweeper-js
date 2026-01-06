@@ -216,7 +216,7 @@ function revealField(state, button) {
 
   switch (state.fields[y][x]) {
     case -1:
-      button.dataset.value = -1;
+      button.dataset.value = 'mine';
       break;
 
     case 0:

@@ -99,7 +99,7 @@ body {
 #grid button.flagged::after {
   content: '🚩';
 }
-#grid button[data-value='-1']::after {
+#grid button[data-value='mine']::after {
   content: '*';
 }
 #grid button[data-value='1'] {
