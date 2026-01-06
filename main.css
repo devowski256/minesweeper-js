@@ -99,30 +99,30 @@ body {
 #grid button.flagged::after {
   content: '🚩';
 }
-#grid button[data-value='mine']::after {
+#grid button.mine::after {
   content: '*';
 }
-#grid button[data-value='1'] {
+#grid button.value-1 {
   color: #0100f3;
 }
-#grid button[data-value='2'] {
+#grid button.value-2 {
   color: #367c21;
 }
-#grid button[data-value='3'] {
+#grid button.value-3 {
   color: #e93323;
 }
-#grid button[data-value='4'] {
+#grid button.value-4 {
   color: #020079;
 }
-#grid button[data-value='5'] {
+#grid button.value-5 {
   color: #78150e;
 }
-#grid button[data-value='6'] {
+#grid button.value-6 {
   color: #387e7e;
 }
-#grid button[data-value='7'] {
+#grid button.value-7 {
   color: #000000;
 }
-#grid button[data-value='8'] {
+#grid button.value-8 {
   color: #808080;
 }

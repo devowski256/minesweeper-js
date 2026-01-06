@@ -216,7 +216,7 @@ function revealField(state, button) {
 
   switch (state.fields[y][x]) {
     case -1:
-      button.dataset.value = 'mine';
+      button.className = 'mine';
       break;
 
     case 0:
@@ -224,8 +224,9 @@ function revealField(state, button) {
       break;
 
     default:
-      button.dataset.value = state.fields[y][x];
-      button.innerText = state.fields[y][x];
+      const value = state.fields[y][x];
+      button.className = `value-${value}`;
+      button.innerText = value;
       state.fieldsLeft--;
   }
 
@@ -278,18 +279,18 @@ function revealEmptyArea(grid, state, x, y) {
 }
 
 function main() {
+  const state = initGameState({
+    width: 10,
+    height: 12,
+    minesCount: 12,
+  });
+
   const view = {
     minesLeft: document.getElementById('mines-left'),
     smiley: document.getElementById('smiley'),
     timer: document.getElementById('timer'),
     grid: document.getElementById('grid'),
   };
-
-  const state = initGameState({
-    width: 10,
-    height: 12,
-    minesCount: 12,
-  });
 
   createFieldButtons(view, state);
   initView(view, state);
