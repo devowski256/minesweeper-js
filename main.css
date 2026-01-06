@@ -1,0 +1,128 @@
+body {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  margin-top: 5px;
+  text-align: center;
+  background: #333;
+  font-family: 'Press Start 2P', monospace;
+}
+
+.game {
+  display: inline-block;
+  background: #c0c0c3;
+  padding: 4px;
+}
+
+.nav {
+  display: flex;
+  margin-bottom: 5px;
+  padding: 2px;
+  justify-content: space-between;
+}
+
+#mines-left,
+#timer {
+  display: flex;
+  align-items: center;
+  color: #ea3323;
+  background: #000;
+  padding: 3px;
+  font-size: 18px;
+}
+
+#restart {
+  display: block;
+  padding: 0;
+  width: 34px;
+  height: 34px;
+  font-size: 23px;
+  background: inherit;
+}
+
+#restart::after {
+  content: '🙂';
+}
+
+#restart.lost::after {
+  content: '😵‍💫';
+}
+
+#restart.won::after {
+  content: '😎';
+}
+
+#grid {
+  display: inline-grid;
+  user-select: none;
+}
+
+#grid button {
+  display: block;
+  padding: 0;
+  width: 26px;
+  height: 26px;
+  font-family: inherit;
+  font-size: 16px;
+  background: inherit;
+}
+
+#grid button:disabled.exploded {
+  background: #ea3323;
+}
+
+/* Outset border */
+.game,
+#grid button,
+#restart {
+  border: 2px solid;
+  border-color: #fff #808080 #808080 #fff;
+}
+
+/* Inset border */
+.nav,
+#grid,
+#restart:active {
+  border: 2px solid;
+  border-color: #808080 #fff #fff #808080;
+}
+
+#grid button:disabled {
+  background: #c0c0c3;
+  border: 1px solid #808080;
+  border-bottom: none;
+  border-right: none;
+  color: inherit;
+}
+
+#grid button.flagged::after {
+  content: '🚩';
+}
+#grid button[data-value='-1']::after {
+  content: '*';
+}
+#grid button[data-value='1'] {
+  color: #0100f3;
+}
+#grid button[data-value='2'] {
+  color: #367c21;
+}
+#grid button[data-value='3'] {
+  color: #e93323;
+}
+#grid button[data-value='4'] {
+  color: #020079;
+}
+#grid button[data-value='5'] {
+  color: #78150e;
+}
+#grid button[data-value='6'] {
+  color: #387e7e;
+}
+#grid button[data-value='7'] {
+  color: #000000;
+}
+#grid button[data-value='8'] {
+  color: #808080;
+}
